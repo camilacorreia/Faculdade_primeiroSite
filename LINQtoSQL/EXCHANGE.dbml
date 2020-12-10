@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="EXCHANGE" Class="EXCHANGEDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=Desktop-98hj3ju;Initial Catalog=EXCHANGE;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="EXCHANGEConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Conta" Member="Conta">
+    <Type Name="Conta">
+      <Column Name="cod_conta" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="conta_saldo" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="id_usuario_fk" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_moeda_fk" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Moeda_Conta" Member="Moeda" ThisKey="id_moeda_fk" OtherKey="id_moeda" Type="Moeda" IsForeignKey="true" />
+      <Association Name="Usuario_Conta" Member="Usuario" ThisKey="id_usuario_fk" OtherKey="id_usuario" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Moeda" Member="Moeda">
+    <Type Name="Moeda">
+      <Column Name="id_moeda" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="moeda_descricao" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="moeda_tipo" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="moeda_padrao" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Association Name="Moeda_Conta" Member="Conta" ThisKey="id_moeda" OtherKey="id_moeda_fk" Type="Conta" />
+      <Association Name="Moeda_moeda_valor" Member="moeda_valor" ThisKey="id_moeda" OtherKey="id_moeda_fk" Type="moeda_valor" />
+      <Association Name="Moeda_transacoes" Member="transacoes" ThisKey="id_moeda" OtherKey="id_moeda_fk" Type="transacoes" />
+    </Type>
+  </Table>
+  <Table Name="dbo.moeda_valor" Member="moeda_valor">
+    <Type Name="moeda_valor">
+      <Column Name="id_moeda_valor" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="mv_dataHora" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="mv_valor" Type="System.Decimal" DbType="Decimal(10,0) NOT NULL" CanBeNull="false" />
+      <Column Name="id_moeda_fk" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Moeda_moeda_valor" Member="Moeda" ThisKey="id_moeda_fk" OtherKey="id_moeda" Type="Moeda" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tipo_Usuario" Member="Tipo_Usuario">
+    <Type Name="Tipo_Usuario">
+      <Column Name="cod_tipoUsu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descricao_tipoUsu" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Tipo_Usuario_Usuario" Member="Usuario" ThisKey="cod_tipoUsu" OtherKey="cod_tipoUsu_fk" Type="Usuario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.transacoes" Member="transacoes">
+    <Type Name="transacoes">
+      <Column Name="id_transacao" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dt_transacao" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="transacao_qtd" Type="System.Decimal" DbType="Decimal(10,0) NOT NULL" CanBeNull="false" />
+      <Column Name="tipo_transacao" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="transacao_vlr_total" Type="System.Decimal" DbType="Decimal(10,0) NOT NULL" CanBeNull="false" />
+      <Column Name="transacao_status" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="id_usuario_fk" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_moeda_fk" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Moeda_transacoes" Member="Moeda" ThisKey="id_moeda_fk" OtherKey="id_moeda" Type="Moeda" IsForeignKey="true" />
+      <Association Name="Usuario_transacoes" Member="Usuario" ThisKey="id_usuario_fk" OtherKey="id_usuario" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Usuario" Member="Usuario">
+    <Type Name="Usuario">
+      <Column Name="id_usuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="usu_nome" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_senha" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
+      <Column Name="tipo_num_doc" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_num_doc" Type="System.String" DbType="VarChar(14) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_telefone" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="usu_celular" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="usu_status" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="usu_cep" Type="System.String" DbType="VarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_num" Type="System.Decimal" DbType="Decimal(6,0) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_comp" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="cod_tipoUsu_fk" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Usuario_Conta" Member="Conta" ThisKey="id_usuario" OtherKey="id_usuario_fk" Type="Conta" />
+      <Association Name="Usuario_transacoes" Member="transacoes" ThisKey="id_usuario" OtherKey="id_usuario_fk" Type="transacoes" />
+      <Association Name="Tipo_Usuario_Usuario" Member="Tipo_Usuario" ThisKey="cod_tipoUsu_fk" OtherKey="cod_tipoUsu" Type="Tipo_Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

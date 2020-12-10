@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EXCHANGEModelStoreContainer" CdmEntityContainer="EXCHANGEEntities">
+    <EntitySetMapping Name="Contas">
+      <EntityTypeMapping TypeName="EXCHANGEModel.Conta">
+        <MappingFragment StoreEntitySet="Conta">
+          <ScalarProperty Name="cod_conta" ColumnName="cod_conta" />
+          <ScalarProperty Name="conta_saldo" ColumnName="conta_saldo" />
+          <ScalarProperty Name="id_usuario_fk" ColumnName="id_usuario_fk" />
+          <ScalarProperty Name="id_moeda_fk" ColumnName="id_moeda_fk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Moedas">
+      <EntityTypeMapping TypeName="EXCHANGEModel.Moeda">
+        <MappingFragment StoreEntitySet="Moeda">
+          <ScalarProperty Name="id_moeda" ColumnName="id_moeda" />
+          <ScalarProperty Name="moeda_descricao" ColumnName="moeda_descricao" />
+          <ScalarProperty Name="moeda_tipo" ColumnName="moeda_tipo" />
+          <ScalarProperty Name="moeda_padrao" ColumnName="moeda_padrao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="moeda_valor">
+      <EntityTypeMapping TypeName="EXCHANGEModel.moeda_valor">
+        <MappingFragment StoreEntitySet="moeda_valor">
+          <ScalarProperty Name="id_moeda_valor" ColumnName="id_moeda_valor" />
+          <ScalarProperty Name="mv_dataHora" ColumnName="mv_dataHora" />
+          <ScalarProperty Name="mv_valor" ColumnName="mv_valor" />
+          <ScalarProperty Name="id_moeda_fk" ColumnName="id_moeda_fk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_Usuario">
+      <EntityTypeMapping TypeName="EXCHANGEModel.Tipo_Usuario">
+        <MappingFragment StoreEntitySet="Tipo_Usuario">
+          <ScalarProperty Name="cod_tipoUsu" ColumnName="cod_tipoUsu" />
+          <ScalarProperty Name="descricao_tipoUsu" ColumnName="descricao_tipoUsu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transacoes">
+      <EntityTypeMapping TypeName="EXCHANGEModel.transaco">
+        <MappingFragment StoreEntitySet="transacoes">
+          <ScalarProperty Name="id_transacao" ColumnName="id_transacao" />
+          <ScalarProperty Name="dt_transacao" ColumnName="dt_transacao" />
+          <ScalarProperty Name="transacao_qtd" ColumnName="transacao_qtd" />
+          <ScalarProperty Name="tipo_transacao" ColumnName="tipo_transacao" />
+          <ScalarProperty Name="transacao_vlr_total" ColumnName="transacao_vlr_total" />
+          <ScalarProperty Name="transacao_status" ColumnName="transacao_status" />
+          <ScalarProperty Name="id_usuario_fk" ColumnName="id_usuario_fk" />
+          <ScalarProperty Name="id_moeda_fk" ColumnName="id_moeda_fk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="EXCHANGEModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="usu_nome" ColumnName="usu_nome" />
+          <ScalarProperty Name="usu_email" ColumnName="usu_email" />
+          <ScalarProperty Name="usu_senha" ColumnName="usu_senha" />
+          <ScalarProperty Name="usu_tipo" ColumnName="usu_tipo" />
+          <ScalarProperty Name="tipo_num_doc" ColumnName="tipo_num_doc" />
+          <ScalarProperty Name="usu_cpf" ColumnName="usu_cpf" />
+          <ScalarProperty Name="usu_cnpj" ColumnName="usu_cnpj" />
+          <ScalarProperty Name="usu_telefone" ColumnName="usu_telefone" />
+          <ScalarProperty Name="usu_celular" ColumnName="usu_celular" />
+          <ScalarProperty Name="usu_status" ColumnName="usu_status" />
+          <ScalarProperty Name="usu_cep" ColumnName="usu_cep" />
+          <ScalarProperty Name="usu_num" ColumnName="usu_num" />
+          <ScalarProperty Name="usu_comp" ColumnName="usu_comp" />
+          <ScalarProperty Name="cod_tipoUsu_fk" ColumnName="cod_tipoUsu_fk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,118 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+h1 {
+    font-family: Elephant;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 100px;
+    font-weight: 400;
+    color: whitesmoke;
+    background-position: center;
+    -webkit-background-clip: text;
+}
+
+.row {
+    background-color: DarkSlateGray;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-color: DarkSlateGray;
+    background-position-y: -150px;
+}
+
+.header {
+    background-image: url('../Imagens/MediocreElegantFattaileddunnart-size_restricted.gif');
+    padding: 20px;
+    text-align: center;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+}
+
+    .topnav a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+        .topnav a:hover {
+            background-color: white;
+            color: black;
+        }
+
+.column {
+    float: left;
+    width: 47%;
+    padding: 8px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.box {
+    background-position: center;
+    width: 400px;
+    padding: 40px;
+    position: absolute;
+    top: 87%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: whitesmoke;
+    text-align: center;
+    left: 653px;
+    right: 65px;
+    border-radius: 10px;
+    transition: 0.25s;
+}
+    .box h2 {
+        color: darkslategrey;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+    .box input[type="text"], .box input[type="password"] {
+        border: 0;
+        background: none;
+        display: block;
+        margin: 20px auto;
+        text-align: center;
+        border: 2px solid #3498db;
+        padding: 14px 10px;
+        outline: none;
+        color: darkslategrey;
+        border-radius: 10px;
+        transition: 0.25s;
+    }
+    .box input[type="text"]:focus, .box input[type="password"]:focus{
+        width:280px;
+        border-color:#2ecc71;
+    }
+    .box input[type="submit"] {
+        border: 0;
+        background: none;
+        display: block;
+        margin: 20px auto 20px 90px;
+        text-align: center;
+        border: 2px solid #2ecc71;
+        padding: 14px 10px;
+        outline: none;
+        color: darkslategrey;
+        border-radius: 24px;
+        transition: 0.25s;
+        cursor: pointer;
+    }
+        .box input[type="submit"]:hover {
+            background: #2ecc71;
+        }

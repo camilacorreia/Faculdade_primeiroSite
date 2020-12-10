@@ -1,0 +1,114 @@
+﻿
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    font-family: Elephant;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 100px;
+    font-weight: 400;
+    color: whitesmoke;
+    background-position: center;
+    -webkit-background-clip: text;
+}
+
+.row {
+    background-color: DarkSlateGray;
+}
+
+    body {
+        margin: 0;
+    height: 890px;
+}
+
+.header {
+    background-image: url('../Imagens/MediocreElegantFattaileddunnart-size_restricted.gif');
+    padding: 20px;
+    text-align: center;
+}
+
+    .topnav {
+        overflow: hidden;
+        background-color: #333;
+    }
+
+        .topnav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+            .topnav a:hover {
+                background-color: white;
+                color: black;
+            }
+
+    .column {
+        float: left;
+        width: 47%;
+        padding: 8px;
+    }
+        .column input[type="submit"] {
+            border: 0;
+            background: none;
+            display: block;
+            text-align: center;
+            border: 1px solid #2ecc71;
+            padding: 12px 8px;
+            outline: none;
+            color: whitesmoke;
+            border-radius: 20px;
+            transition: 0.25s;
+            cursor: pointer;
+            margin-right:0.5em;
+        }
+            .column input[type="submit"]:hover {
+                background: #2ecc71;
+            }
+        .column input[type="text"], .column input[type="text"] {
+            border: 0;
+            background: none;
+            display: block;
+            margin: 10px auto;
+            text-align: center;
+            border: 1px solid #3498db;
+            padding: 12px 8px;
+            outline: none;
+            color: whitesmoke;
+            border-radius: 10px;
+            transition: 0.25s;
+            cursor: pointer;
+        }
+    .column input[type="text"], .column input[type="text"]:focus {
+        width: 280px;
+        border-color: #2ecc71;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+@media screen and (max-width:600px) {
+        .column {
+            width: 100%;
+        }
+}
+
+    .center {
+        text-align: center;
+    height: 794px;
+}
+
+#imgper {
+    left: 653px;
+    right: 65px;
+    border-radius: 10px;
+    transition: 0.25s;
+}

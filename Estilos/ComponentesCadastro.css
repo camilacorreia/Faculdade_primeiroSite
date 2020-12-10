@@ -1,0 +1,133 @@
+﻿
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    color:black;
+    border:none;
+}
+
+h1 {
+    font-family: Elephant;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 100px;
+    font-weight: 400;
+    color: whitesmoke;
+    background-position: center;
+    -webkit-background-clip: text;
+}
+
+
+.header {
+    background-image: url('../Imagens/MediocreElegantFattaileddunnart-size_restricted.gif');
+    padding: 30px;
+    text-align: center;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+}
+
+    .topnav a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+        .topnav a:hover {
+            background-color: white;
+            color: black;
+        }
+
+input, label{
+    display:block;
+    width:100%;
+}
+
+input:focus, label:focus{
+    outline:none;
+}
+
+body {
+    padding: 0; /* view height -> 5% da tela*/
+    background-color: DarkSlateGray;
+    background-size: cover;
+    background-position-y: -150px;
+}
+
+#main-container {
+    background-position: center;
+    width:540px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+@media screen and (max-width:600px) {
+    .column {
+        width: 100%;
+    }
+}
+
+.full-box{
+    flex:1 1 100%;
+    position:relative;
+}
+
+.half-box{
+    filter: 1 1 45%;
+    position:relative;
+}
+
+.spacing{
+    margin-right: 2.5%;
+}
+
+label{
+    font-weight:bold;
+}
+
+input {
+    background-position: center;
+    border-bottom: 2px solid darkslategrey;
+    padding:10px;
+    font-size:.9rem;
+    margin-bottom: 40px;
+}
+
+    input:focus {
+        border-color: darkslategrey;
+    }
+
+    input[type="submit"] {
+        border-style: none;
+        border-color: inherit;
+        border-width: medium;
+        background-color: #2ecc71;
+        color: whitesmoke;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    #agreement{
+        margin-right:5px;
+    }
+#agreement, darkslategrey-label{
+    display:inline-block;
+    width:auto;
+}
+
+.center {
+    text-align: center;
+    height: 1477px;
+}
+
+a    background-position: left;
+}

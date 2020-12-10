@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EXCHANGEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Conta">
+    <Key>
+      <PropertyRef Name="cod_conta" />
+    </Key>
+    <Property Name="cod_conta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="conta_saldo" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="id_usuario_fk" Type="int" Nullable="false" />
+    <Property Name="id_moeda_fk" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Moeda">
+    <Key>
+      <PropertyRef Name="id_moeda" />
+    </Key>
+    <Property Name="id_moeda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="moeda_descricao" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="moeda_tipo" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="moeda_padrao" Type="varchar" MaxLength="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="moeda_valor">
+    <Key>
+      <PropertyRef Name="id_moeda_valor" />
+    </Key>
+    <Property Name="id_moeda_valor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mv_dataHora" Type="datetime" Nullable="false" />
+    <Property Name="mv_valor" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="id_moeda_fk" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_Usuario">
+    <Key>
+      <PropertyRef Name="cod_tipoUsu" />
+    </Key>
+    <Property Name="cod_tipoUsu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descricao_tipoUsu" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="transacoes">
+    <Key>
+      <PropertyRef Name="id_transacao" />
+    </Key>
+    <Property Name="id_transacao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dt_transacao" Type="date" Nullable="false" />
+    <Property Name="transacao_qtd" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="tipo_transacao" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="transacao_vlr_total" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="transacao_status" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="id_usuario_fk" Type="int" Nullable="false" />
+    <Property Name="id_moeda_fk" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="usu_nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="usu_email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="usu_senha" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="usu_tipo" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="tipo_num_doc" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="usu_cpf" Type="varchar" MaxLength="11" />
+    <Property Name="usu_cnpj" Type="varchar" MaxLength="14" />
+    <Property Name="usu_telefone" Type="varchar" MaxLength="10" />
+    <Property Name="usu_celular" Type="varchar" MaxLength="11" />
+    <Property Name="usu_status" Type="varchar" MaxLength="10" />
+    <Property Name="usu_cep" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="usu_num" Type="numeric" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="usu_comp" Type="varchar" MaxLength="50" />
+    <Property Name="cod_tipoUsu_fk" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Conta__id_moeda___2F10007B">
+    <End Role="Moeda" Type="Self.Moeda" Multiplicity="1" />
+    <End Role="Conta" Type="Self.Conta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Moeda">
+        <PropertyRef Name="id_moeda" />
+      </Principal>
+      <Dependent Role="Conta">
+        <PropertyRef Name="id_moeda_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Conta__id_usuari__2E1BDC42">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Conta" Type="Self.Conta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="Conta">
+        <PropertyRef Name="id_usuario_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__moeda_val__id_mo__267ABA7A">
+    <End Role="Moeda" Type="Self.Moeda" Multiplicity="1" />
+    <End Role="moeda_valor" Type="Self.moeda_valor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Moeda">
+        <PropertyRef Name="id_moeda" />
+      </Principal>
+      <Dependent Role="moeda_valor">
+        <PropertyRef Name="id_moeda_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__transacoe__id_mo__32E0915F">
+    <End Role="Moeda" Type="Self.Moeda" Multiplicity="1" />
+    <End Role="transacoes" Type="Self.transacoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Moeda">
+        <PropertyRef Name="id_moeda" />
+      </Principal>
+      <Dependent Role="transacoes">
+        <PropertyRef Name="id_moeda_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__transacoe__id_us__31EC6D26">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="transacoes" Type="Self.transacoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="transacoes">
+        <PropertyRef Name="id_usuario_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario__cod_tip__2B3F6F97">
+    <End Role="Tipo_Usuario" Type="Self.Tipo_Usuario" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Usuario">
+        <PropertyRef Name="cod_tipoUsu" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="cod_tipoUsu_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EXCHANGEModelStoreContainer">
+    <EntitySet Name="Conta" EntityType="Self.Conta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Moeda" EntityType="Self.Moeda" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="moeda_valor" EntityType="Self.moeda_valor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_Usuario" EntityType="Self.Tipo_Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="transacoes" EntityType="Self.transacoes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Conta__id_moeda___2F10007B" Association="Self.FK__Conta__id_moeda___2F10007B">
+      <End Role="Moeda" EntitySet="Moeda" />
+      <End Role="Conta" EntitySet="Conta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Conta__id_usuari__2E1BDC42" Association="Self.FK__Conta__id_usuari__2E1BDC42">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Conta" EntitySet="Conta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__moeda_val__id_mo__267ABA7A" Association="Self.FK__moeda_val__id_mo__267ABA7A">
+      <End Role="Moeda" EntitySet="Moeda" />
+      <End Role="moeda_valor" EntitySet="moeda_valor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__transacoe__id_mo__32E0915F" Association="Self.FK__transacoe__id_mo__32E0915F">
+      <End Role="Moeda" EntitySet="Moeda" />
+      <End Role="transacoes" EntitySet="transacoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__transacoe__id_us__31EC6D26" Association="Self.FK__transacoe__id_us__31EC6D26">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="transacoes" EntitySet="transacoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario__cod_tip__2B3F6F97" Association="Self.FK__Usuario__cod_tip__2B3F6F97">
+      <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
